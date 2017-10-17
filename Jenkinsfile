@@ -7,7 +7,7 @@ def registry           = "quay.io"
 def registry_user      = "samsung_cnct"
 def robot_secret       = "quay-robot-drunkensmee-container-rw"
 def image_name         = "drunkensmee-container"
-def image_tag          = "${env.RELEASE_VERSION}" != "null" ? "${env.RELEASE_VERSION}" : "latest"
+def image_tag          = "${env.RELEASE_VERSION}" != "null" ? "${env.RELEASE_VERSION}" : "${env.GIT_COMMIT.substring(0,7)}"
 
 podTemplate(label: "${image_name}", containers: [
     containerTemplate(name: 'jnlp',
